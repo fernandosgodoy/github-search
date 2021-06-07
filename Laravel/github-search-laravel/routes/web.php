@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+$router->group(['prefix' => 'api', ''], function () use ($router) {
+    $router->get('search-git/{query}',  ['uses' => 'GitHubSearchController@Search']);
+});
